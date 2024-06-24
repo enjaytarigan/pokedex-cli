@@ -27,6 +27,10 @@ func (c cliConfig) GetCaughtPokemon(pokemonName string) (pokemon pokeapi.Pokemon
 	return poke, ok
 }
 
+func (c cliConfig) GetAllCaughtPokemons() map[string]pokeapi.Pokemon {
+	return c.caughPokemon
+}
+
 func (c cliConfig) NextLocAreaApiUrl() string {
 	if c.nextLocAreaApiUrl == "" {
 		return "https://pokeapi.co/api/v2/location-area/"
@@ -113,6 +117,11 @@ func getCommands() map[string]cliCommand {
 			name:        "inspect <pokemon>",
 			description: "Inpsect a caught pokemon",
 			handler:     handleInspectPokemon,
+		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "Display pokedex",
+			handler:     handleCommandPokedex,
 		},
 	}
 }

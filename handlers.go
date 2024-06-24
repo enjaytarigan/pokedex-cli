@@ -138,3 +138,11 @@ func handleInspectPokemon(cfg *cliConfig, args ...string) error {
 
 	return nil
 }
+
+func handleCommandPokedex(cfg *cliConfig, args ...string) error {
+	fmt.Println("Your Pokedex: ")
+	for _, pokemon := range cfg.GetAllCaughtPokemons() {
+		fmt.Printf("  - %s\n", pokemon.Name)
+	}
+	return nil
+}
